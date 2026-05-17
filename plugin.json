@@ -1,0 +1,21 @@
+{
+  "name": "crypto-agent-mail",
+  "version": "1.0.0",
+  "description": "Crypto-native email infrastructure for AI agents. Create inboxes, send/receive emails, and manage agent communication — powered by USDC payments on Solana.",
+  "author": "LumoraBuild",
+  "license": "MIT",
+  "repository": "https://github.com/influqa/crypto-agent-mail-skills",
+  "homepage": "https://www.srun66.com",
+  "tags": ["email", "crypto", "agent", "solana", "usdc", "mcp", "a2a", "x402"],
+  "endpoints": {
+    "api": "https://crypto-agent-mail.influqa.workers.dev",
+    "mcp": "https://crypto-agent-mail.influqa.workers.dev/mcp",
+    "agent_card": "https://crypto-agent-mail.influqa.workers.dev/.well-known/agent-card.json"
+  },
+  "payment": {
+    "protocol": "x402",
+    "network": "solana",
+    "token": "USDC",
+    "price": "0.50"
+  }
+}
