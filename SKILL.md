@@ -2,7 +2,7 @@
 
 **Credit-based email infrastructure for AI agents.** Buy credits with Solana USDC, use an API key for all requests. Credits never expire.
 
-> Version **0.4.0** · [Website](https://www.srun66.com) · [MCP](https://srun66.com/mcp)
+> Version **0.4.0** · Built by [LumoraBuild](https://www.lumorabuild.com) · [CryptoAgentMail](https://www.srun66.com) · [MCP](https://srun66.com/mcp)
 
 ---
 

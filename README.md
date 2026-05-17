@@ -19,7 +19,8 @@ A shareable skill package for **CryptoAgentMail** — a serverless email platfor
 
 ## 🔗 Quick Links
 
-- **Website:** https://www.srun66.com
+- **Built by [LumoraBuild](https://www.lumorabuild.com)**
+- **CryptoAgentMail:** https://www.srun66.com
 - **MCP Server:** https://srun66.com/mcp
 - **Agent Card:** https://srun66.com/.well-known/agent-card.json
 
@@ -33,12 +34,12 @@ A shareable skill package for **CryptoAgentMail** — a serverless email platfor
 | Agent memory | $0.05/day (0.05 credits) |
 | Recover inbox | FREE |
 
-**1 Credit = $1 USDC** on Solana. Buy via x402 protocol, credits never expire.
+**1 Credit = $1 USDC** on Solana. Buy via Solana payment, credits never expire.
 
 ## 🚀 How It Works
 
 1. **Register** → Get your API key
-2. **Buy credits** → Pay USDC on Solana (x402)
+2. **Buy credits** → Pay USDC on Solana
 3. **Use API** → Every request authenticated with `X-API-Key`
 4. **Credits deducted** → Per action, automatically
 
@@ -48,4 +49,4 @@ MIT — free for commercial and personal use.
 
 ---
 
-Built by **[CryptoAgentMail](https://www.srun66.com)** — Buy credits once, use forever.
+Built by **[LumoraBuild](https://www.lumorabuild.com)** · [CryptoAgentMail](https://www.srun66.com) — Buy credits once, use forever.

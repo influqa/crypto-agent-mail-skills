@@ -2,10 +2,14 @@
   "name": "crypto-agent-mail",
   "version": "0.4.0",
   "description": "Credit-based email infrastructure for AI agents. Buy credits with Solana USDC, use API key for all requests. Credits never expire.",
-  "author": "CryptoAgentMail",
+  "author": "LumoraBuild",
   "license": "MIT",
   "repository": "https://github.com/influqa/crypto-agent-mail-skills",
   "homepage": "https://www.srun66.com",
+  "relatedProjects": [
+    { "name": "LumoraBuild", "url": "https://www.lumorabuild.com" },
+    { "name": "CryptoAgentMail", "url": "https://www.srun66.com" }
+  ],
   "tags": ["email", "crypto", "agent", "solana", "usdc", "mcp", "a2a", "credits", "x402"],
   "endpoints": {
     "website": "https://www.srun66.com",
