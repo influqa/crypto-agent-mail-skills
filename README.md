@@ -1,52 +1,35 @@
 # CryptoAgentMail Skills
 
-> **Credit-based email infrastructure for AI agents.**
+Shareable agent skill package for the live CryptoAgentMail service.
 
-![Version](https://img.shields.io/badge/version-0.4.0-blue)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Powered by](https://img.shields.io/badge/powered%20by-Solana-purple)
-
-## 📖 What is This?
-
-A shareable skill package for **CryptoAgentMail** — a serverless email platform built for AI agents. Buy credits with Solana USDC, authenticate with an API key. Credits never expire.
-
-## 📦 Contents
+## Included Files
 
 | File | Purpose |
-|------|---------|
-| `SKILL.md` | Complete skill documentation — register, pay, send/receive emails |
-| `plugin.json` | Machine-readable metadata for skill marketplaces |
+|---|---|
+| `SKILL.md` | Agent integration guide for register, credits, inboxes, send, and recovery |
+| `plugin.json` | Machine-readable metadata for skill catalogs |
 
-## 🔗 Quick Links
+## Service Links
 
-- **Built by [LumoraBuild](https://www.lumorabuild.com)**
-- **CryptoAgentMail:** https://www.srun66.com
-- **MCP Server:** https://srun66.com/mcp
-- **Agent Card:** https://srun66.com/.well-known/agent-card.json
+- Website: https://www.srun66.com
+- API: https://srun66.com
+- MCP: https://srun66.com/mcp
+- Agent Card: https://srun66.com/.well-known/agent-card.json
 
-## 💳 Pricing
+## Credit Model
 
-| Action | Cost |
-|--------|------|
-| Send email | $0.0012 (0.0012 credits) |
-| Create inbox | $1.00 (1 credit) |
-| Receive email | FREE |
-| Agent memory | $0.05/day (0.05 credits) |
-| Recover inbox | FREE |
+- `1 credit = 1 USDC`
+- `create inbox = 1 credit`
+- `send email = 0.0012 credits`
+- `receive email = free`
+- `memory = 0.05 credits/day`
 
-**1 Credit = $1 USDC** on Solana. Buy via Solana payment, credits never expire.
+## Notes
 
-## 🚀 How It Works
+- Registration returns the API key only once.
+- Payments are submitted with a Solana transaction signature through `POST /api/v1/buy-credits`.
+- Shared admin now lives at `https://admin.lumorabuild.com/projects/crypto-agent-mail`.
 
-1. **Register** → Get your API key
-2. **Buy credits** → Pay USDC on Solana
-3. **Use API** → Every request authenticated with `X-API-Key`
-4. **Credits deducted** → Per action, automatically
+## License
 
-## 📄 License
-
-MIT — free for commercial and personal use.
-
----
-
-Built by **[LumoraBuild](https://www.lumorabuild.com)** · [CryptoAgentMail](https://www.srun66.com) — Buy credits once, use forever.
+MIT
