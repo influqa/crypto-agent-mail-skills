@@ -50,20 +50,30 @@ curl -X POST https://srun66.com/api/v1/register \
 
 **Response:** Returns your `apiKey` and `userId`. Save these — the API key is your identity for all future requests.
 
-### Step 2: Buy Credits (x402 payment)
+### Step 2: Buy Credits (Solana USDC payment)
 
-Send a Solana USDC payment to purchase credits via x402 protocol:
+Send USDC on Solana to the merchant wallet, then submit the transaction signature:
 
+```bash
+curl -X POST https://srun66.com/api/v1/buy-credits \
+  -H "X-API-Key: your-api-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "credits": 10,
+    "paymentProof": "<your-solana-tx-signature>"
+  }'
 ```
-POST https://srun66.com/api/v1/credits/purchase
-X-Payment: exact solana USDC <amount> 55ShDWNLCZUQohJbE5dfWZPoTvusYD4FJpCMPNwCE2kW <payload> <signature>
-X-API-Key: your-api-key
-Content-Type: application/json
 
-{"credits": 10}
-```
+**Payment details:**
+| Field | Value |
+|-------|-------|
+| **Network** | Solana |
+| **Token** | USDC (SPL) |
+| **Price** | 1 credit = 1 USDC |
+| **Merchant** | `55ShDWNLCZUQohJbE5dfWZPoTvusYD4FJpCMPNwCE2kW` |
+| **Verification** | On-chain via Solana RPC |
 
-**Credit packages available on the website:**
+**Credit packages:**
 | Package | Credits | Price |
 |---------|---------|-------|
 | Starter | 5 | 5 USDC |
@@ -73,7 +83,7 @@ Content-Type: application/json
 ### Step 3: Check Your Balance
 
 ```bash
-curl -H "X-API-Key: your-api-key" https://srun66.com/api/v1/account/balance
+curl -H "X-API-Key: your-api-key" https://srun66.com/api/v1/balance
 ```
 
 ---
@@ -133,40 +143,41 @@ Every request is authenticated. If your key is compromised, rotate it immediatel
 | Method | Path | Description | Cost |
 |--------|------|-------------|------|
 | `POST` | `/api/v1/register` | Register new agent, get API key | FREE |
-| `GET` | `/api/v1/account/balance` | Check credit balance | FREE |
-| `POST` | `/api/v1/account/rotate-key` | Rotate API key | FREE |
-| `GET` | `/api/v1/account/key-info` | Get key security info | FREE |
+| `GET` | `/api/v1/balance` | Check credit balance | FREE |
+| `POST` | `/api/v1/rotate-key` | Rotate API key | FREE |
 
-### Credit Endpoints (x402 Payment Required)
+### Credit Endpoints (Auth + Payment Required)
 
 | Method | Path | Description |
 |--------|------|-------------|
-| `POST` | `/api/v1/credits/purchase` | Buy credits with USDC |
+| `POST` | `/api/v1/buy-credits` | Buy credits — body: `{credits, paymentProof}` |
 
 ### Inbox Endpoints (Auth Required)
 
 | Method | Path | Description | Cost |
 |--------|------|-------------|------|
-| `POST` | `/api/v1/inboxes/create` | Create email inbox | 1 credit |
-| `GET` | `/api/v1/inboxes` | List your inboxes | FREE |
-| `GET` | `/api/v1/inboxes/:id` | Get inbox details | FREE |
-| `DELETE` | `/api/v1/inboxes/:id` | Delete inbox | FREE |
+| `POST` | `/api/v1/create-inbox` | Create email inbox | 1 credit |
+| `POST` | `/api/v1/share-inbox` | Share inbox with another agent | FREE |
+| `POST` | `/api/v1/recovery` | Request inbox recovery | FREE |
 
 ### Email Endpoints (Auth Required)
 
 | Method | Path | Description | Cost |
 |--------|------|-------------|------|
-| `POST` | `/api/v1/emails/send` | Send email from inbox | 0.0012 credits |
-| `GET` | `/api/v1/inboxes/:id/emails` | List received emails | FREE |
-| `GET` | `/api/v1/inboxes/:id/emails/:emailId` | Get full email | FREE |
+| `POST` | `/api/v1/send` | Send email from inbox | 0.0012 credits |
+| `GET` | `/api/v1/emails` | List received emails (all inboxes) | FREE |
 
-### Memory & Recovery (Auth Required)
+### Memory (Auth Required)
 
 | Method | Path | Description | Cost |
 |--------|------|-------------|------|
-| `POST` | `/api/v1/memory/save` | Save agent memory | 0.05 credits/day |
-| `GET` | `/api/v1/memory/load` | Load saved memory | FREE |
-| `POST` | `/api/v1/inboxes/recover` | Request inbox recovery | FREE |
+| `POST` | `/api/v1/memory` | Save/load agent memory | 0.05 credits/day |
+
+### Email Webhook (Internal)
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `POST` | `/` | Inbound email webhook (Cloudflare Email Routing) |
 
 ---
 
@@ -212,13 +223,13 @@ Save the returned `apiKey` — you'll need it for every request.
 
 ```bash
 curl -H "X-API-Key: YOUR_API_KEY" \
-  https://srun66.com/api/v1/account/balance
+  https://srun66.com/api/v1/balance
 ```
 
 ### 3. Create an Inbox
 
 ```bash
-curl -X POST https://srun66.com/api/v1/inboxes/create \
+curl -X POST https://srun66.com/api/v1/create-inbox \
   -H "X-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -231,7 +242,7 @@ curl -X POST https://srun66.com/api/v1/inboxes/create \
 ### 4. Send an Email
 
 ```bash
-curl -X POST https://srun66.com/api/v1/emails/send \
+curl -X POST https://srun66.com/api/v1/send \
   -H "X-API-Key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -246,7 +257,7 @@ curl -X POST https://srun66.com/api/v1/emails/send \
 
 ```bash
 curl -H "X-API-Key: YOUR_API_KEY" \
-  https://srun66.com/api/v1/inboxes/support@agent.srun66.com/emails
+  https://srun66.com/api/v1/emails
 ```
 
 ---
@@ -254,7 +265,7 @@ curl -H "X-API-Key: YOUR_API_KEY" \
 ## 🔐 API Key Security
 
 - **Never share your API key** — it's your identity and wallet
-- **Rotate immediately** if compromised via `/api/v1/account/rotate-key`
+- **Rotate immediately** if compromised via `/api/v1/rotate-key`
 - **Key prefix logging** — all actions log the first 8 chars of your key for audit
 - **Rate limiting** — 100 requests/minute, auto-block on abuse
 - **Suspension** — accounts can be suspended for policy violations

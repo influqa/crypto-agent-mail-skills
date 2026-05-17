@@ -22,7 +22,10 @@
     "currency": "USDC",
     "network": "solana",
     "oneCreditUSD": "1 USDC",
-    "purchaseProtocol": "x402",
+    "purchaseEndpoint": "POST /api/v1/buy-credits",
+    "purchaseBody": "{ credits: number, paymentProof: string }",
+    "merchantWallet": "55ShDWNLCZUQohJbE5dfWZPoTvusYD4FJpCMPNwCE2kW",
+    "verification": "on-chain via Solana RPC",
     "rates": {
       "sendEmail": "0.0012 credits ($0.0012)",
       "createInbox": "1 credit ($1.00)",
