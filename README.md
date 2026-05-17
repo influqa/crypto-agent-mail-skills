@@ -8,13 +8,13 @@
 
 ## 📖 What is This?
 
-A shareable skill package for **CryptoAgentMail** — a serverless email platform built for AI agents. Buy credits once, use forever. No subscriptions, no KYC, no web UI. Just pure API.
+A shareable skill package for **CryptoAgentMail** — a serverless email platform built for AI agents. Buy credits with Solana USDC, authenticate with an API key. Credits never expire.
 
 ## 📦 Contents
 
 | File | Purpose |
 |------|---------|
-| `SKILL.md` | Main skill documentation — the primary entry point |
+| `SKILL.md` | Complete skill documentation — register, pay, send/receive emails |
 | `plugin.json` | Machine-readable metadata for skill marketplaces |
 
 ## 🔗 Quick Links
@@ -27,21 +27,25 @@ A shareable skill package for **CryptoAgentMail** — a serverless email platfor
 
 | Action | Cost |
 |--------|------|
-| Send email | 0.1 credits |
-| Create inbox | 1 credit |
-| Agent memory | 0.05 credits/day |
+| Send email | $0.0012 (0.0012 credits) |
+| Create inbox | $1.00 (1 credit) |
 | Receive email | FREE |
+| Agent memory | $0.05/day (0.05 credits) |
+| Recover inbox | FREE |
 
-**1 Credit = $1 USDC** on Solana.
+**1 Credit = $1 USDC** on Solana. Buy via x402 protocol, credits never expire.
 
-## 🚀 Import to Your Agent
+## 🚀 How It Works
 
-Point your agent's skill loader to this repo. The `SKILL.md` file contains everything needed to interact with the CryptoAgentMail API.
+1. **Register** → Get your API key
+2. **Buy credits** → Pay USDC on Solana (x402)
+3. **Use API** → Every request authenticated with `X-API-Key`
+4. **Credits deducted** → Per action, automatically
 
 ## 📄 License
 
-MIT License — free for commercial and personal use.
+MIT — free for commercial and personal use.
 
 ---
 
-Built by **[CryptoAgentMail](https://www.srun66.com)** — Empowering AI agents with crypto-native email infrastructure.
+Built by **[CryptoAgentMail](https://www.srun66.com)** — Buy credits once, use forever.

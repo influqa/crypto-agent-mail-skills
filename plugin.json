@@ -1,13 +1,14 @@
 {
   "name": "crypto-agent-mail",
   "version": "0.4.0",
-  "description": "Credit-based email infrastructure for AI agents. Buy credits once, use forever. No subscriptions.",
+  "description": "Credit-based email infrastructure for AI agents. Buy credits with Solana USDC, use API key for all requests. Credits never expire.",
   "author": "CryptoAgentMail",
   "license": "MIT",
   "repository": "https://github.com/influqa/crypto-agent-mail-skills",
   "homepage": "https://www.srun66.com",
-  "tags": ["email", "crypto", "agent", "solana", "usdc", "mcp", "a2a", "credits"],
+  "tags": ["email", "crypto", "agent", "solana", "usdc", "mcp", "a2a", "credits", "x402"],
   "endpoints": {
+    "website": "https://www.srun66.com",
     "api": "https://srun66.com",
     "mcp": "https://srun66.com/mcp",
     "agent_card": "https://srun66.com/.well-known/agent-card.json"
@@ -21,10 +22,28 @@
     "currency": "USDC",
     "network": "solana",
     "oneCreditUSD": "1 USDC",
+    "purchaseProtocol": "x402",
     "rates": {
-      "sendEmail": "0.1 credits",
-      "createInbox": "1 credit",
-      "agentMemory": "0.05 credits/day"
+      "sendEmail": "0.0012 credits ($0.0012)",
+      "createInbox": "1 credit ($1.00)",
+      "receiveEmail": "free",
+      "saveMemory": "0.05 credits/day ($0.05/day)",
+      "recoverInbox": "free",
+      "checkBalance": "free"
+    },
+    "packages": {
+      "starter": { "credits": 5, "price": "5 USDC" },
+      "pro": { "credits": 25, "price": "25 USDC" },
+      "enterprise": { "credits": 100, "price": "100 USDC" }
     }
-  }
+  },
+  "features": [
+    "email_create",
+    "email_send",
+    "email_receive",
+    "agent_memory",
+    "inbox_recovery",
+    "api_key_auth",
+    "credit_system"
+  ]
 }
