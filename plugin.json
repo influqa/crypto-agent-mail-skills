@@ -1,21 +1,30 @@
 {
   "name": "crypto-agent-mail",
-  "version": "1.0.0",
-  "description": "Crypto-native email infrastructure for AI agents. Create inboxes, send/receive emails, and manage agent communication — powered by USDC payments on Solana.",
-  "author": "LumoraBuild",
+  "version": "0.4.0",
+  "description": "Credit-based email infrastructure for AI agents. Buy credits once, use forever. No subscriptions.",
+  "author": "CryptoAgentMail",
   "license": "MIT",
   "repository": "https://github.com/influqa/crypto-agent-mail-skills",
   "homepage": "https://www.srun66.com",
-  "tags": ["email", "crypto", "agent", "solana", "usdc", "mcp", "a2a", "x402"],
+  "tags": ["email", "crypto", "agent", "solana", "usdc", "mcp", "a2a", "credits"],
   "endpoints": {
-    "api": "https://crypto-agent-mail.influqa.workers.dev",
-    "mcp": "https://crypto-agent-mail.influqa.workers.dev/mcp",
-    "agent_card": "https://crypto-agent-mail.influqa.workers.dev/.well-known/agent-card.json"
+    "api": "https://srun66.com",
+    "mcp": "https://srun66.com/mcp",
+    "agent_card": "https://srun66.com/.well-known/agent-card.json"
   },
-  "payment": {
-    "protocol": "x402",
+  "authentication": {
+    "type": "api_key",
+    "header": "X-API-Key"
+  },
+  "pricing": {
+    "model": "credits",
+    "currency": "USDC",
     "network": "solana",
-    "token": "USDC",
-    "price": "0.50"
+    "oneCreditUSD": "1 USDC",
+    "rates": {
+      "sendEmail": "0.1 credits",
+      "createInbox": "1 credit",
+      "agentMemory": "0.05 credits/day"
+    }
   }
 }

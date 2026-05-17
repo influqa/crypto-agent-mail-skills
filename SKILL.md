@@ -1,23 +1,23 @@
 # CryptoAgentMail
 
-**Crypto-native email infrastructure for AI agents.** Create inboxes, send/receive emails, and manage agent communication — powered by USDC payments on Solana.
+**Credit-based email infrastructure for AI agents.** Create inboxes, send/receive emails, persistent memory, and inbox recovery — powered by Solana USDC credits.
 
-> Built by **[LumoraBuild](https://www.lumorabuild.com)** — The future of AI agent tooling.
+> Version **0.4.0** · Built by **[CryptoAgentMail](https://www.srun66.com)**
 
 ---
 
 ## 📖 Overview
 
-CryptoAgentMail is a serverless email platform designed specifically for AI agents. No KYC, no login, no web UI — just pure API with crypto payments. Perfect for autonomous agents that need email capabilities without traditional email account setup.
+CryptoAgentMail is a serverless email platform designed for AI agents. Buy credits once, use forever — no subscriptions required. Pay via Solana USDC, authenticate with an API key.
 
 | Feature | Details |
 |---------|---------|
-| **Protocol** | x402 payments (Solana SPL USDC) |
-| **Price** | 0.50 USDC per inbox creation or email send |
+| **Protocol** | MCP (Model Context Protocol) |
+| **Auth** | API key (`X-API-Key` header) |
+| **Currency** | USDC on Solana |
 | **Storage** | Cloudflare R2 (global edge) |
 | **Delivery** | Cloudflare Email Routing |
-| **Discovery** | A2A agent-card + MCP server |
-| **Auth** | None — payments are the auth |
+| **Discovery** | A2A agent-card |
 
 ---
 
@@ -25,102 +25,95 @@ CryptoAgentMail is a serverless email platform designed specifically for AI agen
 
 | Endpoint | URL |
 |----------|-----|
-| **API Base** | `https://crypto-agent-mail.influqa.workers.dev` |
-| **Agent Card** | `/.well-known/agent-card.json` |
-| **MCP** | `/mcp` |
-| **Custom Domain** | `email.srun66.com` |
+| **Website** | `https://www.srun66.com` |
+| **API Base** | `https://srun66.com` |
+| **MCP Server** | `https://srun66.com/mcp` |
+| **Agent Card** | `https://srun66.com/.well-known/agent-card.json` |
 
 ---
 
-## 📡 API Endpoints
+## 💳 Credits & Pricing
 
-### Public (Free — No Payment Required)
+**1 Credit = $1 USDC** (Solana SPL)
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/` | Health check |
-| `GET` | `/.well-known/agent-card.json` | A2A agent discovery |
-| `ALL` | `/mcp` | MCP server (GET: info, POST: tools) |
-| `GET` | `/api/v1/inboxes` | List all inboxes |
-| `GET` | `/api/v1/inboxes/:id/emails` | List emails for inbox |
-| `GET` | `/api/v1/inboxes/:id/emails/:emailId` | Get full email detail |
-| `DELETE` | `/api/v1/inboxes/:id` | Delete inbox |
-| `POST` | `/api/v1/webhook/email` | Inbound email webhook |
+| Action | Cost |
+|--------|------|
+| Send email | 0.1 credits |
+| Create inbox | 1 credit |
+| Agent memory | 0.05 credits/day |
+| Receive email | FREE |
 
-### Paid (x402 Payment Required — 0.50 USDC)
+### Credit Packages
 
-| Method | Path | Description |
-|--------|------|-------------|
-| `POST` | `/api/v1/create-inbox` | Create a new email inbox |
-| `POST` | `/api/v1/send` | Send email from an inbox |
+| Package | Credits | Price |
+|---------|---------|-------|
+| Starter | 5 | 5 USDC |
+| Pro | 25 | 25 USDC |
+| Enterprise | 100 | 100 USDC |
+
+### Monthly Plans (Recurring)
+
+| Plan | Price | Emails/Mo | Inboxes |
+|------|-------|-----------|---------|
+| Starter | $12/mo | 10,000 | 1 |
+| Pro | $24/mo | 25,000 | 3 |
+| Enterprise | $50/mo | 100,000 | Unlimited |
 
 ---
 
-## 💳 x402 Payment
+## 🔐 Authentication
 
-Paid endpoints require an `X-Payment` header:
+All API calls require an API key in the header:
 
 ```
-X-Payment: exact solana USDC 500000 55ShDWNLCZUQohJbE5dfWZPoTvusYD4FJpCMPNwCE2kW <payload> <signature>
+X-API-Key: your-api-key-here
 ```
 
-- **Network:** Solana
-- **Token:** USDC (SPL)
-- **Amount:** 500000 (0.50 USDC)
-- **Merchant:** `55ShDWNLCZUQohJbE5dfWZPoTvusYD4FJpCMPNwCE2kW`
-
-If no payment is provided, the API returns a `402` response with `X-Payment-Requirements` header containing the payment spec.
+Get your API key from your account after purchasing credits.
 
 ---
 
 ## 🤖 MCP Tools
 
-The MCP server at `/mcp` exposes these tools:
+The MCP server at `https://srun66.com/mcp` exposes these tools:
 
-| Tool | Description |
-|------|-------------|
-| `create_inbox` | Create a new email inbox |
-| `send_email` | Send an email from an inbox |
-| `list_inbox_emails` | List received emails for an inbox |
-| `get_email` | Get full email content by ID |
+| Tool | Description | Cost |
+|------|-------------|------|
+| `create_inbox` | Create a new email inbox | 1 credit |
+| `send_email` | Send an email from an inbox | 0.1 credits |
+| `list_inbox_emails` | List received emails | FREE |
+| `get_email` | Get full email content | FREE |
+| `store_memory` | Persist agent memory | 0.05 credits/day |
+| `recover_inbox` | Recover inbox to new agent | FREE |
 
 ---
 
 ## 🚀 Quick Start
 
-### Create an Inbox
+### 1. Get API Key
+
+Purchase credits at `https://www.srun66.com` and receive your API key.
+
+### 2. Create an Inbox
 
 ```bash
-curl -X POST https://crypto-agent-mail.influqa.workers.dev/api/v1/create-inbox \
+curl -X POST https://srun66.com/api/v1/create-inbox \
   -H "Content-Type: application/json" \
-  -H "X-Payment: exact solana USDC 500000 55ShDWNLCZUQohJbE5dfWZPoTvusYD4FJpCMPNwCE2kW <payload> <signature>" \
+  -H "X-API-Key: your-api-key-here" \
   -d '{
     "name": "SupportAgent",
-    "email": "support@email.srun66.com",
+    "email": "support@agent.srun66.com",
     "systemPrompt": "You are a customer support agent."
   }'
 ```
 
-**Response:**
-```json
-{
-  "ok": true,
-  "inbox": {
-    "email": "support@email.srun66.com",
-    "name": "SupportAgent",
-    "createdAt": "2026-05-17T12:00:00.000Z"
-  },
-  "message": "Inbox created successfully. Payment of 0.50 USDC received."
-}
-```
-
-### Send an Email
+### 3. Send an Email
 
 ```bash
-curl -X POST https://crypto-agent-mail.influqa.workers.dev/api/v1/send \
+curl -X POST https://srun66.com/api/v1/send \
   -H "Content-Type: application/json" \
-  -H "X-From-Inbox: support@email.srun66.com" \
-  -H "X-Payment: exact solana USDC 500000 55ShDWNLCZUQohJbE5dfWZPoTvusYD4FJpCMPNwCE2kW <payload> <signature>" \
+  -H "X-API-Key: your-api-key-here" \
+  -H "X-From-Inbox: support@agent.srun66.com" \
   -d '{
     "to": "user@example.com",
     "subject": "Hello!",
@@ -128,16 +121,18 @@ curl -X POST https://crypto-agent-mail.influqa.workers.dev/api/v1/send \
   }'
 ```
 
-### List Inboxes (Free)
+### 4. List Inboxes (Free)
 
 ```bash
-curl https://crypto-agent-mail.influqa.workers.dev/api/v1/inboxes
+curl -H "X-API-Key: your-api-key-here" \
+  https://srun66.com/api/v1/inboxes
 ```
 
-### List Emails (Free)
+### 5. List Emails (Free)
 
 ```bash
-curl https://crypto-agent-mail.influqa.workers.dev/api/v1/inboxes/support@email.srun66.com/emails
+curl -H "X-API-Key: your-api-key-here" \
+  https://srun66.com/api/v1/inboxes/support@agent.srun66.com/emails
 ```
 
 ---
@@ -147,13 +142,13 @@ curl https://crypto-agent-mail.influqa.workers.dev/api/v1/inboxes/support@email.
 ```
 ┌────────────────── Cloudflare Workers ──────────────────┐
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐            │
-│  │  Hono    │  │   x402   │  │   MCP    │            │
-│  │  Router  │  │  Middleware│  │  Server  │            │
+│  │  Hono    │  │  Credit  │  │   MCP    │            │
+│  │  Router  │  │  System  │  │  Server  │            │
 │  ────┬─────┘  └────┬─────┘  └────┬─────┘            │
 │       │             │             │                  │
 │  ┌────┴─────┐  ┌────┴─────┐  ┌────┴─────┐           │
-│  │ API      │  │ Payment  │  │ Tools    │           │
-│  │ Routes   │  │ Verify   │  │ Registry │           │
+│  │ API      │  │ Credit   │  │ Tools    │           │
+│  │ Routes   │  │ Deduct   │  │ Registry │           │
 │  └────┬─────┘  └────┬─────┘  └────┬─────┘           │
 └───────┼─────────────┼─────────────┼──────────────────┘
         │             │             │
@@ -171,18 +166,20 @@ curl https://crypto-agent-mail.influqa.workers.dev/api/v1/inboxes/support@email.
 | Framework | Hono |
 | Storage | Cloudflare R2 |
 | Email | Cloudflare Email Routing + Send Email binding |
-| Payments | x402 protocol (Solana SPL USDC) |
-| Discovery | A2A agent-card standard |
+| Payments | Solana SPL USDC |
+| Auth | API key |
+| Discovery | A2A agent-card |
 | AI Integration | MCP (Model Context Protocol) |
 | Validation | Zod |
 
 ## 🔒 Security
 
-- **No API keys** — x402 payments serve as authentication
+- **API key auth** — each request authenticated via `X-API-Key`
+- **Credit-based billing** — transparent, per-action costs
 - **No personal data** stored — inbox data is agent-owned
-- **No KYC required** — permissionless by design
 - **Edge-native** — runs on Cloudflare's global network (300+ locations)
 - **Isolated storage** — each inbox has its own R2 key namespace
+- **Inbox recovery** — if agent crashes, authorize a new agent to access the same inbox
 
 ## 📄 License
 
@@ -192,6 +189,6 @@ MIT License — free for commercial and personal use.
 
 ## 🙌 Credits
 
-Built by **[LumoraBuild](https://www.lumorabuild.com)** — Empowering AI agents with crypto-native infrastructure.
+Built by **[CryptoAgentMail](https://www.srun66.com)** — Empowering AI agents with crypto-native email infrastructure.
 
-> "The future of AI agents is crypto-native, permissionless, and edge-deployed."
+> "Buy credits once, use forever. No subscriptions. No hidden fees."

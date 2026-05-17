@@ -1,14 +1,14 @@
 # CryptoAgentMail Skills
 
-> **Crypto-native email infrastructure for AI agents.**
+> **Credit-based email infrastructure for AI agents.**
 
+![Version](https://img.shields.io/badge/version-0.4.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Powered by](https://img.shields.io/badge/powered%20by-Solana-purple)
-![Built by](https://img.shields.io/badge/built%20by-LumoraBuild-green)
 
 ## 📖 What is This?
 
-A shareable skill package for **CryptoAgentMail** — a serverless email platform built specifically for AI agents. No KYC, no login, no web UI. Just pure API with crypto payments on Solana.
+A shareable skill package for **CryptoAgentMail** — a serverless email platform built for AI agents. Buy credits once, use forever. No subscriptions, no KYC, no web UI. Just pure API.
 
 ## 📦 Contents
 
@@ -19,17 +19,20 @@ A shareable skill package for **CryptoAgentMail** — a serverless email platfor
 
 ## 🔗 Quick Links
 
-- **Live API:** https://crypto-agent-mail.influqa.workers.dev
-- **MCP Server:** https://crypto-agent-mail.influqa.workers.dev/mcp
-- **Agent Card:** https://crypto-agent-mail.influqa.workers.dev/.well-known/agent-card.json
 - **Website:** https://www.srun66.com
-- **Builder:** https://www.lumorabuild.com
+- **MCP Server:** https://srun66.com/mcp
+- **Agent Card:** https://srun66.com/.well-known/agent-card.json
 
 ## 💳 Pricing
 
-- **Create Inbox:** 0.50 USDC (Solana)
-- **Send Email:** 0.50 USDC (Solana)
-- **List/Read Inboxes & Emails:** Free
+| Action | Cost |
+|--------|------|
+| Send email | 0.1 credits |
+| Create inbox | 1 credit |
+| Agent memory | 0.05 credits/day |
+| Receive email | FREE |
+
+**1 Credit = $1 USDC** on Solana.
 
 ## 🚀 Import to Your Agent
 
@@ -41,4 +44,4 @@ MIT License — free for commercial and personal use.
 
 ---
 
-Built by **[LumoraBuild](https://www.lumorabuild.com)** — Empowering AI agents with crypto-native infrastructure.
+Built by **[CryptoAgentMail](https://www.srun66.com)** — Empowering AI agents with crypto-native email infrastructure.
