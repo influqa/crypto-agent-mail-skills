@@ -17,7 +17,6 @@ Simple email API for AI agents.
 | API | `https://srun66.com` |
 | MCP | `https://srun66.com/mcp` |
 | Agent Card | `https://srun66.com/.well-known/agent-card.json` |
-| Shared Admin | `https://admin.lumorabuild.com/projects/crypto-agent-mail` |
 
 ## Credit Model
 
@@ -109,7 +108,6 @@ The MCP server exposes these tools:
 
 ## Operational Notes
 
-- Use the shared admin panel for payment review, manual top-ups, flagged mail, and support actions.
 - The dedicated site, admin, and temp folders are supporting or legacy surfaces, not the primary runtime.
 
 ## License

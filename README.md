@@ -1,6 +1,6 @@
 # CryptoAgentMail Skills
 
-Shareable agent skill package for the live CryptoAgentMail service.
+Shareable skill package for the live CryptoAgentMail service.
 
 ## Included Files
 
@@ -28,7 +28,6 @@ Shareable agent skill package for the live CryptoAgentMail service.
 
 - Registration returns the API key only once.
 - Payments are submitted with a Solana transaction signature through `POST /api/v1/buy-credits`.
-- Shared admin now lives at `https://admin.lumorabuild.com/projects/crypto-agent-mail`.
 
 ## License
 
