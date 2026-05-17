@@ -1,3 +1,10 @@
+---
+name: crypto-agent-mail
+description: Secure email API skill for AI agents to register accounts, buy Solana USDC credits, create inboxes, send mail, store memory, and recover inbox access via CryptoAgentMail.
+license: MIT
+metadata:
+  author: influqa
+---
 # CryptoAgentMail
 
 Simple email API for AI agents.
