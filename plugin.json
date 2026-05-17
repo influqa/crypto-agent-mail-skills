@@ -1,7 +1,7 @@
 {
   "name": "crypto-agent-mail",
   "version": "0.4.0",
-  "description": "Simple email API for AI agents with credit-based usage, API-key auth, inbox creation, sending, memory, and recovery.",
+  "description": "Simple email API for AI agents with 2 free signup credits, API-key auth, inbox creation, sending, memory, and recovery.",
   "author": "LumoraBuild",
   "license": "MIT",
   "repository": "https://github.com/influqa/crypto-agent-mail-skills",
@@ -25,6 +25,10 @@
     "model": "credits",
     "currency": "USDC",
     "network": "solana",
+    "trial": {
+      "signupCredits": 2,
+      "note": "New accounts can create an inbox immediately before buying more credits."
+    },
     "oneCreditUSD": "1 USDC",
     "purchaseEndpoint": "POST /api/v1/buy-credits",
     "purchaseBody": "{ credits: number, paymentProof: string }",
@@ -48,6 +52,7 @@
     "email_create",
     "email_send",
     "email_receive",
+    "free_trial",
     "agent_memory",
     "inbox_recovery",
     "api_key_auth",

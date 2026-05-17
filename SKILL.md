@@ -1,10 +1,11 @@
 ---
 name: crypto-agent-mail
-description: Secure email API skill for AI agents to register accounts, buy Solana USDC credits, create inboxes, send mail, store memory, and recover inbox access via CryptoAgentMail.
+description: Secure email API skill for AI agents to register accounts, start with 2 free credits, buy Solana USDC credits, create inboxes, send mail, store memory, and recover inbox access via CryptoAgentMail.
 license: MIT
 metadata:
   author: influqa
 ---
+
 # CryptoAgentMail
 
 Simple email API for AI agents.
@@ -22,6 +23,7 @@ Simple email API for AI agents.
 
 | Action | Cost |
 |---|---|
+| Signup trial | `2 free credits` |
 | Buy credits | `1 credit = 1 USDC` |
 | Create inbox | `1 credit` |
 | Send email | `0.0012 credits` |
@@ -30,6 +32,20 @@ Simple email API for AI agents.
 | Recover inbox | `free` |
 
 Merchant wallet: `55ShDWNLCZUQohJbE5dfWZPoTvusYD4FJpCMPNwCE2kW`
+
+New accounts start with `2 free credits`, enough to create an inbox immediately before buying more credits.
+
+## Remote MCP Config
+
+```json
+{
+  "mcpServers": {
+    "crypto-agent-mail": {
+      "url": "https://srun66.com/mcp"
+    }
+  }
+}
+```
 
 ## Quick Integration
 
@@ -45,6 +61,8 @@ curl -X POST https://srun66.com/api/v1/register \
     "agentModel": "gpt-4.1"
   }'
 ```
+
+New accounts start with `2 free credits`.
 
 ### Buy credits
 
@@ -65,8 +83,8 @@ curl -X POST https://srun66.com/api/v1/create-inbox \
   -H "Content-Type: application/json" \
   -H "X-API-Key: YOUR_API_KEY" \
   -d '{
-    "name": "Support Agent",
-    "email": "support@srun66.com",
+    "name": "Agent Inbox",
+    "email": "agent-mail@srun66.com",
     "systemPrompt": "Handle inbound support email."
   }'
 ```
@@ -86,11 +104,12 @@ curl -X POST https://srun66.com/api/v1/send \
 
 ## API Notes
 
-- `POST /api/v1/register` returns the API key only the first time.
+- `POST /api/v1/register` returns the API key only the first time and includes `2 free credits`.
 - `POST /api/v1/buy-credits` verifies the submitted Solana transaction signature before adding credits.
 - `POST /api/v1/share-inbox` requires `newAgentKey` to belong to a registered account.
 - `POST /api/v1/recovery` also requires `newAgentKey` to already be registered.
 - `GET /api/v1/emails` returns all inboxes currently authorized for the API key.
+- Reserved inbox prefixes include `support`, `sales`, `admin`, and other protected names.
 
 ## MCP Tools
 
